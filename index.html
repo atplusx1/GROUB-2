@@ -1,0 +1,186 @@
+<!DOCTYPE html>   
+<html lang="ar" dir="rtl">   
+<head>   
+  <meta charset="utf-8">   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+  <title>GROUP 2 - Project Team</title>   
+  <style>   
+    :root { 
+      --bg-color: #0b0f19; 
+      --card-bg: rgba(15, 23, 42, 0.75); 
+      --border-color: rgba(255, 255, 255, 0.08); 
+      --accent-cyan: #00f2fe; 
+      --accent-active: #10b981; 
+      --accent-inactive: #ef4444; 
+      --text-main: #f8fafc; 
+      --text-muted: #94a3b8; 
+    } 
+
+    * {   
+      box-sizing: border-box;   
+      margin: 0;   
+      padding: 0;   
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;   
+    }   
+
+    body {   
+      background-color: var(--bg-color);   
+      color: var(--text-main);   
+      display: flex;   
+      flex-direction: column;   
+      align-items: center;   
+      justify-content: center;   
+      min-height: 100vh;   
+      padding: 20px;   
+    }   
+
+    .team-card {   
+      background: var(--card-bg);   
+      backdrop-filter: blur(12px); 
+      border: 1px solid var(--border-color);   
+      border-radius: 16px;   
+      padding: 24px;   
+      width: 100%;   
+      max-width: 440px;   
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);   
+    }   
+
+    .card-header {   
+      text-align: center;   
+      padding-bottom: 16px;   
+      margin-bottom: 20px;   
+      border-bottom: 1px solid var(--border-color);   
+    }   
+
+    .card-title { 
+      font-size: 1.1rem;   
+      font-weight: 700;   
+      color: var(--accent-cyan);   
+      letter-spacing: 1.5px;   
+      text-transform: uppercase; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+    } 
+
+    .member-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+    } 
+
+    .member-item {   
+      display: flex;   
+      justify-content: space-between;   
+      align-items: center;   
+      padding: 12px 14px;   
+      background: rgba(255, 255, 255, 0.02); 
+      border: 1px solid rgba(255, 255, 255, 0.03); 
+      border-radius: 10px; 
+      transition: all 0.2s ease; 
+    }   
+
+    .member-item:hover { 
+      background: rgba(255, 255, 255, 0.05); 
+      transform: translateY(-1px); 
+    } 
+
+    .member-name { 
+      font-size: 0.9rem; 
+      font-weight: 500; 
+      color: var(--text-main); 
+    } 
+
+    .badges-group { 
+      display: flex; 
+      gap: 6px; 
+      align-items: center; 
+    } 
+
+    .badge { 
+      font-size: 0.75rem; 
+      font-weight: 600; 
+      padding: 4px 10px; 
+      border-radius: 6px; 
+      letter-spacing: 0.5px; 
+    } 
+
+    .badge-leader { background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.3); } 
+    .badge-mit { background: rgba(255, 159, 67, 0.1); color: #ff9f43; border: 1px solid rgba(255, 159, 67, 0.3); } 
+    .badge-wokwi { background: rgba(162, 155, 254, 0.1); color: #a29bfe; border: 1px solid rgba(162, 155, 254, 0.3); } 
+    .badge-ppt { background: rgba(253, 203, 110, 0.1); color: #fdcb6e; border: 1px solid rgba(253, 203, 110, 0.3); } 
+
+    .status { 
+      font-size: 0.75rem; 
+      font-weight: 700; 
+      padding: 4px 10px; 
+      border-radius: 6px; 
+      display: flex; 
+      align-items: center; 
+      gap: 6px; 
+    } 
+
+    .status-active { 
+      color: var(--accent-active); 
+      background: rgba(16, 185, 129, 0.1); 
+    } 
+
+    .status-inactive { 
+      color: var(--accent-inactive); 
+      background: rgba(239, 68, 68, 0.1); 
+    } 
+
+    .footer { 
+      margin-top: 20px; 
+      text-align: center; 
+      font-size: 0.75rem; 
+      color: var(--text-muted); 
+      letter-spacing: 1px; 
+    } 
+  </style>   
+</head>   
+<body>   
+
+  <main class="team-card">   
+    <header class="card-header"> 
+      <h1 class="card-title">👥 GROUP 2 TEAM</h1>   
+    </header> 
+
+    <div class="member-list"> 
+      <div class="member-item">   
+        <span class="member-name">Abdelrahman Tamer Awad</span>   
+        <div class="badges-group"> 
+          <span class="badge badge-leader">LEADER</span> 
+          <span class="badge badge-mit">MIT APP</span> 
+        </div> 
+      </div>   
+
+      <div class="member-item">   
+        <span class="member-name">Malak Khaled Ali Mostafa</span>   
+        <span class="badge badge-wokwi">WOKWI PROJECT</span>   
+      </div>   
+
+      <div class="member-item">   
+        <span class="member-name">Moaz Ahmed Fayeq Foda</span>   
+        <span class="badge badge-ppt">POWERPOINT</span>   
+      </div>   
+
+      <div class="member-item">   
+        <span class="member-name">Ganna Hanafy Magdy Hanafy</span>   
+        <span class="status status-inactive">NOT ACTIVE</span>   
+      </div>   
+
+      <div class="member-item">   
+        <span class="member-name">Kenzy Hatem Mohamed Salah</span>   
+        <span class="status status-inactive">NOT ACTIVE</span>   
+      </div>   
+    </div> 
+
+    <footer class="footer"> 
+      © POWERED BY GROUP 2 
+    </footer>   
+  </main>   
+
+</body>   
+</html>
