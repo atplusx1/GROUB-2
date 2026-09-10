@@ -3,24 +3,31 @@
 <head>   
   <meta charset="utf-8">   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-  <title>GROUP 2 - Project Team</title>   
+  <title>GROUP 2</title>   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>   
     :root { 
-      --bg-color: #0b0f19; 
-      --card-bg: rgba(15, 23, 42, 0.75); 
+      --bg-color: #030712; 
+      --card-bg: rgba(17, 24, 39, 0.75); 
       --border-color: rgba(255, 255, 255, 0.08); 
-      --accent-cyan: #00f2fe; 
-      --accent-active: #10b981; 
-      --accent-inactive: #ef4444; 
-      --text-main: #f8fafc; 
-      --text-muted: #94a3b8; 
+      --text-main: #f9fafb; 
+      --text-muted: #6b7280; 
+
+      --glow-color-1: #00f2fe; 
+      --glow-color-2: #e056fd; 
+      --glow-color-3: #10b981; 
+      --led-color-4: #f1c40f; 
+      --led-color-5: #ff7675; 
     } 
 
     * {   
       box-sizing: border-box;   
       margin: 0;   
       padding: 0;   
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;   
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;   
     }   
 
     body {   
@@ -32,65 +39,136 @@
       justify-content: center;   
       min-height: 100vh;   
       padding: 20px;   
+      position: relative;
+      overflow-x: hidden;
     }   
 
+    body::before {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(0,0,0,0) 70%);
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .team-card {   
+      position: relative;
+      z-index: 1;
       background: var(--card-bg);   
-      backdrop-filter: blur(12px); 
+      backdrop-filter: blur(20px); 
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-color);   
-      border-radius: 16px;   
-      padding: 24px;   
+      border-radius: 24px;   
+      padding: 32px 28px;   
       width: 100%;   
-      max-width: 440px;   
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);   
+      max-width: 480px;   
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);   
     }   
 
     .card-header {   
       text-align: center;   
-      padding-bottom: 16px;   
-      margin-bottom: 20px;   
+      padding-bottom: 20px;   
+      margin-bottom: 24px;   
       border-bottom: 1px solid var(--border-color);   
     }   
 
     .card-title { 
-      font-size: 1.1rem;   
-      font-weight: 700;   
-      color: var(--accent-cyan);   
-      letter-spacing: 1.5px;   
+      font-size: 1.2rem;   
+      font-weight: 800;   
+      letter-spacing: 2px;   
       text-transform: uppercase; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      gap: 8px; 
     } 
+
+    .card-title span {
+      color: #00f2fe;
+      text-shadow: 0 0 8px rgba(0, 242, 254, 0.4), 0 0 15px rgba(0, 242, 254, 0.2);
+    }
 
     .member-list { 
       display: flex; 
       flex-direction: column; 
-      gap: 10px; 
+      gap: 16px; 
     } 
 
     .member-item {   
-      display: flex;   
-      justify-content: space-between;   
-      align-items: center;   
-      padding: 12px 14px;   
-      background: rgba(255, 255, 255, 0.02); 
-      border: 1px solid rgba(255, 255, 255, 0.03); 
-      border-radius: 10px; 
-      transition: all 0.2s ease; 
+      position: relative;
+      border-radius: 14px; 
+      overflow: hidden;
+      padding: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease;
     }   
 
     .member-item:hover { 
-      background: rgba(255, 255, 255, 0.05); 
-      transform: translateY(-1px); 
+      transform: translateY(-2px); 
     } 
 
+    .member-item.has-led::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 500%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 280deg,
+        var(--led-color) 360deg
+      );
+      animation: rotateLED 3s linear infinite;
+    }
+
+    @keyframes rotateLED {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .member-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;   
+      justify-content: space-between;   
+      align-items: center;   
+      padding: 12px 16px;   
+      border-radius: 12px;
+      background: #0d1322;
+      transition: all 0.3s ease;
+    }
+
+    .glowing-box .member-content {
+      border: 1px solid var(--glow-color);
+      box-shadow: inset 0 0 8px var(--glow-color), 0 0 10px var(--glow-color);
+      background: linear-gradient(135deg, rgba(13, 19, 34, 0.9), rgba(13, 19, 34, 0.7));
+    }
+
+    .item-1 { --glow-color: var(--glow-color-1); }
+    .item-2 { --glow-color: var(--glow-color-2); }
+    .item-3 { --glow-color: var(--glow-color-3); }
+    .item-4 { --led-color: var(--led-color-4); }
+    .item-5 { --led-color: var(--led-color-5); }
+
     .member-name { 
-      font-size: 0.9rem; 
-      font-weight: 500; 
-      color: var(--text-main); 
+      font-size: 0.95rem; 
+      font-weight: 600; 
+      color: #ffffff; 
+      direction: ltr; 
+      text-align: left;
     } 
+
+    .glowing-box .member-name {
+      text-shadow: 0 0 6px var(--glow-color);
+    }
 
     .badges-group { 
       display: flex; 
@@ -99,44 +177,45 @@
     } 
 
     .badge { 
-      font-size: 0.75rem; 
-      font-weight: 600; 
-      padding: 4px 10px; 
-      border-radius: 6px; 
-      letter-spacing: 0.5px; 
-    } 
-
-    .badge-leader { background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.3); } 
-    .badge-mit { background: rgba(255, 159, 67, 0.1); color: #ff9f43; border: 1px solid rgba(255, 159, 67, 0.3); } 
-    .badge-wokwi { background: rgba(162, 155, 254, 0.1); color: #a29bfe; border: 1px solid rgba(162, 155, 254, 0.3); } 
-    .badge-ppt { background: rgba(253, 203, 110, 0.1); color: #fdcb6e; border: 1px solid rgba(253, 203, 110, 0.3); } 
-
-    .status { 
-      font-size: 0.75rem; 
+      font-size: 0.7rem; 
       font-weight: 700; 
-      padding: 4px 10px; 
-      border-radius: 6px; 
-      display: flex; 
-      align-items: center; 
-      gap: 6px; 
+      padding: 5px 10px; 
+      border-radius: 20px; 
+      letter-spacing: 0.5px; 
+      text-transform: uppercase;
     } 
 
-    .status-active { 
-      color: var(--accent-active); 
-      background: rgba(16, 185, 129, 0.1); 
+    .badge-leader { 
+      background: rgba(0, 242, 254, 0.2); 
+      color: #00f2fe; 
+      border: 1px solid rgba(0, 242, 254, 0.4); 
     } 
-
-    .status-inactive { 
-      color: var(--accent-inactive); 
-      background: rgba(239, 68, 68, 0.1); 
+    
+    .badge-mit { 
+      background: rgba(245, 158, 11, 0.2); 
+      color: #fbbf24; 
+      border: 1px solid rgba(251, 191, 36, 0.4); 
+    } 
+    
+    .badge-wokwi { 
+      background: rgba(224, 86, 253, 0.2); 
+      color: #e056fd; 
+      border: 1px solid rgba(224, 86, 253, 0.4); 
+    } 
+    
+    .badge-ppt { 
+      background: rgba(16, 185, 129, 0.2); 
+      color: #10b981; 
+      border: 1px solid rgba(16, 185, 129, 0.4); 
     } 
 
     .footer { 
-      margin-top: 20px; 
+      margin-top: 24px; 
       text-align: center; 
       font-size: 0.75rem; 
       color: var(--text-muted); 
-      letter-spacing: 1px; 
+      letter-spacing: 1.5px; 
+      font-weight: 600;
     } 
   </style>   
 </head>   
@@ -144,36 +223,44 @@
 
   <main class="team-card">   
     <header class="card-header"> 
-      <h1 class="card-title">👥 GROUP 2 TEAM</h1>   
+      <h1 class="card-title"><span>GROUP 2</span></h1>   
     </header> 
 
     <div class="member-list"> 
-      <div class="member-item">   
-        <span class="member-name">Abdelrahman Tamer Awad</span>   
-        <div class="badges-group"> 
-          <span class="badge badge-leader">LEADER</span> 
-          <span class="badge badge-mit">MIT APP</span> 
-        </div> 
+      <div class="member-item glowing-box item-1">   
+        <div class="member-content">
+          <span class="member-name">Abdelrahman Tamer Awad</span>   
+          <div class="badges-group"> 
+            <span class="badge badge-leader">LEADER</span> 
+            <span class="badge badge-mit">MIT APP</span> 
+          </div> 
+        </div>
       </div>   
 
-      <div class="member-item">   
-        <span class="member-name">Malak Khaled Ali Mostafa</span>   
-        <span class="badge badge-wokwi">WOKWI PROJECT</span>   
+      <div class="member-item glowing-box item-2">   
+        <div class="member-content">
+          <span class="member-name">Malak Khaled Ali Mostafa</span>   
+          <span class="badge badge-wokwi">WOKWI PROJECT</span>   
+        </div>
       </div>   
 
-      <div class="member-item">   
-        <span class="member-name">Moaz Ahmed Fayeq Foda</span>   
-        <span class="badge badge-ppt">POWERPOINT</span>   
+      <div class="member-item glowing-box item-3">   
+        <div class="member-content">
+          <span class="member-name">Moaz Ahmed Fayeq Foda</span>   
+          <span class="badge badge-ppt">POWERPOINT</span>   
+        </div>
       </div>   
 
-      <div class="member-item">   
-        <span class="member-name">Ganna Hanafy Magdy Hanafy</span>   
-        <span class="status status-inactive">NOT ACTIVE</span>   
+      <div class="member-item has-led item-4">   
+        <div class="member-content">
+          <span class="member-name">Ganna Hanafy Magdy Hanafy</span>   
+        </div>
       </div>   
 
-      <div class="member-item">   
-        <span class="member-name">Kenzy Hatem Mohamed Salah</span>   
-        <span class="status status-inactive">NOT ACTIVE</span>   
+      <div class="member-item has-led item-5">   
+        <div class="member-content">
+          <span class="member-name">Kenzy Hatem Mohamed Salah</span>   
+        </div>
       </div>   
     </div> 
 
