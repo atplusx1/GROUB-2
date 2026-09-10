@@ -19,8 +19,8 @@
       --glow-color-1: #00f2fe; 
       --glow-color-2: #e056fd; 
       --glow-color-3: #10b981; 
-      --led-color-4: #f1c40f; 
-      --led-color-5: #ff7675; 
+      --glow-color-4: #f1c40f; 
+      --glow-color-5: #ff7675; 
     } 
 
     * {   
@@ -114,25 +114,6 @@
       transform: translateY(-2px); 
     } 
 
-    .member-item.has-led::before {
-      content: '';
-      position: absolute;
-      width: 150%;
-      height: 500%;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 280deg,
-        var(--led-color) 360deg
-      );
-      animation: rotateLED 3s linear infinite;
-    }
-
-    @keyframes rotateLED {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     .member-content {
       position: relative;
       z-index: 2;
@@ -155,8 +136,8 @@
     .item-1 { --glow-color: var(--glow-color-1); }
     .item-2 { --glow-color: var(--glow-color-2); }
     .item-3 { --glow-color: var(--glow-color-3); }
-    .item-4 { --led-color: var(--led-color-4); }
-    .item-5 { --led-color: var(--led-color-5); }
+    .item-4 { --glow-color: var(--glow-color-4); }
+    .item-5 { --glow-color: var(--glow-color-5); }
 
     .member-name { 
       font-size: 0.95rem; 
@@ -207,6 +188,18 @@
       background: rgba(16, 185, 129, 0.2); 
       color: #10b981; 
       border: 1px solid rgba(16, 185, 129, 0.4); 
+    }
+
+    .badge-reviewer-yellow { 
+      background: rgba(241, 196, 15, 0.2); 
+      color: #f1c40f; 
+      border: 1px solid rgba(241, 196, 15, 0.4); 
+    }
+
+    .badge-reviewer-red { 
+      background: rgba(255, 118, 117, 0.2); 
+      color: #ff7675; 
+      border: 1px solid rgba(255, 118, 117, 0.4); 
     } 
 
     .footer { 
@@ -251,15 +244,17 @@
         </div>
       </div>   
 
-      <div class="member-item has-led item-4">   
+      <div class="member-item glowing-box item-4">   
         <div class="member-content">
-          <span class="member-name">Ganna Hanafy Magdy Hanafy</span>   
+          <span class="member-name">Rahma Mohamed Mostafa</span>   
+          <span class="badge badge-reviewer-yellow">REVIEWER</span>
         </div>
       </div>   
 
-      <div class="member-item has-led item-5">   
+      <div class="member-item glowing-box item-5">   
         <div class="member-content">
           <span class="member-name">Kenzy Hatem Mohamed Salah</span>   
+          <span class="badge badge-reviewer-red">REVIEWER</span>
         </div>
       </div>   
     </div> 
